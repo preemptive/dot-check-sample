@@ -1,0 +1,18 @@
+﻿<Window x:Class="DotCheckSample.Wpf.OptionsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DotCheckSample.Wpf"
+        mc:Ignorable="d"        
+        Title="Consequences" Height="300" Width="300"
+        Closing="Window_Closing"
+        >
+    <StackPanel Margin="20">
+        <TextBlock Padding="10" TextWrapping="Wrap">No Peeking! You must now choose your consequence:</TextBlock>
+        <Button Margin ="5" Name="btnOptionsClose" Click="btnOptionsClose_Click">Exit</Button>
+        <Button Margin ="5" Name="btnOptionsTweet" Click="btnOptionsTweet_Click">Tweet Shame Me</Button>
+        <Button Margin ="5" Name="btnOptionsMalware" Click="btnOptionsMalware_Click" IsEnabled="False">Run Ransomware</Button>
+        <Button Margin ="5" Name="btnOptionsLucky" Click="btnOptionsLucky_Click">I'm Feeling Lucky</Button>
+    </StackPanel>
+</Window>

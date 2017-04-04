@@ -1,0 +1,106 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  x:Name="App" mc:Ignorable="d" x:Class="DotCheckSample.Wpf.MainWindow"
+        Title="DotCheckSample.Wpf" Height="430" Width="807.222"
+        >
+    <Window.Resources>
+        <SolidColorBrush x:Key="background">White</SolidColorBrush>
+    </Window.Resources>
+    <Grid Background="{StaticResource background}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Column="0" Grid.Row="0" x:Name="tabCtrl" SelectionChanged="tabCtrl_SelectionChanged" Background="{StaticResource background}">
+            <TabItem Header="About" Tag="About">
+                <StackPanel Background="{StaticResource background}">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Name="txtDescription" Padding="5,5,5,5" Text="The DotCheckSample lets users submit expense requests to a remote service. A &quot;user identity&quot; consisting of a role and a user key is synthesized on a session-by-session basis – you can see your value at any time by visiting the Show Identity tab. The sample demonstrates how an application like this can be vulnerable to attacks via debugging, and shows how it can defend itself from such attacks using Dotfuscator's Debug Check and Shelf Life capabilities." VerticalAlignment="Top" />
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Padding="5,5,5,5" Text="This application is a working sample of the kinds of anti-debugging behaviors that can be implemented with Dotfuscator. It includes standard behaviors, such as &quot;exit the application&quot; and &quot;send an alert to a PreEmptive Analytics endpoint&quot;, as well as custom behaviors, such as &quot;send an event to Application Insights&quot;, and &quot;prevent the application from running in the future&quot;." VerticalAlignment="Top" Visibility="{Binding UIVisibility}"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Padding="5,5,5,5" VerticalAlignment="Top" Visibility="{Binding UIVisibility}"><Run Text="The source code, Dotfuscator configuration, and documentation for this sample can be found on "></Run><Hyperlink NavigateUri="https://github.com/preemptive/dot-check-sample" RequestNavigate="Hyperlink_RequestNavigate">GitHub</Hyperlink><Run Text="."/></TextBlock>
+                                       
+                    <StackPanel IsEnabled="{Binding IsUIEnabled}">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type CheckBox}">
+                                <Setter Property="Margin" Value="20,10,0,0"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Padding="5,20,5,5" Text="Notification Options:"/>
+                        <CheckBox Name="chkPA" IsChecked="{Binding PreEmptiveAnalytics, Mode=TwoWay}" ToolTipService.ShowOnDisabled="True" ToolTip="Notifications are always sent to PreEmptive Analytics because Dotfuscator has been configured to inject that response.">PreEmptive Analytics</CheckBox>
+                        <CheckBox Name="chkAI" IsChecked="{Binding ApplicationInsights, Mode=TwoWay}" ToolTipService.ShowOnDisabled="True" ToolTip="This option will be disabled if you have not provided your Application Insights Instrumentation Key in the application. See the sample's source for details.">Application Insights</CheckBox>
+
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Show Identity" Tag="View Profile" IsEnabled="{Binding IsUIEnabled}">
+                <StackPanel Background="{StaticResource background}">
+
+                    <TextBlock Padding="5,5,5,5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" ><Run Text="This is your identity for the duration of this session."/></TextBlock>
+                    <StackPanel Margin="0,50,0,0"  HorizontalAlignment="Center">
+                        
+
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="20,0,0,0"/>
+                                </Style>
+                            </Grid.Resources>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="80*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="userNamelbl" Grid.Column="1" Grid.Row="0" Content="Label" HorizontalAlignment="Left"  />
+                            <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="User:" FontWeight="Bold" VerticalAlignment="Center"/>
+
+                            <Label x:Name="licenseKeylbl" Grid.Column="1" Grid.Row="1" Content="Label" HorizontalAlignment="Left"  />
+                            <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="License Key:" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <Label x:Name="departmentlbl" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Content="Label"/>
+                            <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Department:" FontWeight="Bold" VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Expense Request" Tag="Expense Request Page" IsEnabled="{Binding IsUIEnabled}">
+
+                <StackPanel Background="{StaticResource background}">
+                    <TextBlock Padding="5,5,5,5" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" ><Run Text="Submit your expense request here. The service will let you know if the request is approved or rejected."/></TextBlock>
+
+                    <StackPanel Margin="0,50,0,0"  HorizontalAlignment="Center">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="20,0,0,0"/>
+                                </Style>
+                            </Grid.Resources>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="80*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <ComboBox x:Name="expenseReason" Grid.Column="1" Grid.Row="0" Margin="0,10" Width="120" HorizontalAlignment="Left"></ComboBox>
+                            <Label Grid.Column="0" Grid.Row="0" Margin="0,10"  Content="Reason" HorizontalAlignment="Right"/>
+                            <Label Content="Amount" Grid.Column="0" Grid.Row="1" Margin="0,10" HorizontalAlignment="Right"/>
+                            <TextBox x:Name="expenseAmount" Grid.Column="1" Grid.Row="1" Margin="0,10" TextWrapping="Wrap" Width="120" HorizontalAlignment="Left"/>
+                            
+                        </Grid>
+                        <Button Name="btnSubmit" Margin="0,20,0,0" Content="Submit" Width="207" Click="Submit_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
