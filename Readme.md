@@ -1,4 +1,4 @@
-# PreEmptive Analytics Sample Application Overview
+# Dotfuscator "Checks" Sample Application Overview
 The sample application highlights select use cases and patterns for Dotfuscator users. It can be used as:
 
 * Presentation and instructional material
@@ -8,4 +8,4 @@ The sample application highlights select use cases and patterns for Dotfuscator 
 * \DotCheckSample.Wpf\ - A WPF application, with Dotfuscator CE and Pro configuration files that protect the application via obfuscation and injection of runtime checks.
 
 # More Information
-[Harden your .NET Applications with Dotfuscator's Anti-Debug Protections](https://www.preemptive.com/blog/). This article on the PreEmptive Solutions blog walks through the sample.
+[Harden your .NET Applications with Dotfuscator's Anti-Debug Protections](https://www.preemptive.com/blog/article/914-harden-your-net-applications-with-dotfuscators-anti-debug-protections/91-dotfuscator-ce). This article on the PreEmptive Solutions blog walks through the sample.
