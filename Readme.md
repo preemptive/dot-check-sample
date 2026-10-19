@@ -1,11 +1,9 @@
-# Dotfuscator "Checks" Sample Application Overview
-The sample application highlights select use cases and patterns for Dotfuscator users. It can be used as:
+# dot-check-sample
 
-* Presentation and instructional material
-* Code samples for developers using Dotfuscator to inject runtime checks (such as Debug or Shelf-Life) into their own applications 
+> **This repository has moved to a new public location.**
 
-# Summary of the Repository
-* \DotCheckSample.Wpf\ - A WPF application, with Dotfuscator CE and Pro configuration files that protect the application via obfuscation and injection of runtime checks.
+The source code for this project is now maintained at:
 
-# More Information
-[Harden your .NET Applications with Dotfuscator's Anti-Debug Protections](https://www.preemptive.com/blog/article/914-harden-your-net-applications-with-dotfuscators-anti-debug-protections/91-dotfuscator-ce). This article on the PreEmptive Solutions blog walks through the sample.
+## [https://github.com/sembi-oss/dot-check-sample](https://github.com/sembi-oss/dot-check-sample)
+
+Please update your bookmarks, forks, and any references to point to the new address.
